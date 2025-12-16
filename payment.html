@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paiement Sécurisé - Apple Store Cameroun</title>
+  <link rel="stylesheet" href="style.css"> <!-- Ton CSS principal -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> <!-- Pour icônes -->
+  <style>
+    /* Styles améliorés et colorés pour la page de paiement */
+    body {
+      font-family: "SF Pro Text", -apple-system, sans-serif;
+      padding: 0;
+      color: #333;
+      transition: background 0.3s ease;
+      min-height: 100vh;
+      margin-top: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    :root.dark body {
+      background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%); /* Gradient sombre bleu-noir */
+    }
+    .payment-container {
+      max-width: 550px;
+      width: 100%;
+      margin: 20px;
+      padding: 40px;
+      background: #ffffff;
+      border-radius: 25px;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.15);
+      position: relative;
+      overflow: hidden;
+      animation: fadeIn 0.5s ease;
+    }
+    :root.dark .payment-container {
+      background: #2a2a2a;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.6);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .payment-container::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, rgba(255, 165, 0, 0.1), rgba(0, 123, 255, 0.1), transparent);
+      animation: shine 8s linear infinite;
+    }
+    @keyframes shine {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+      position: relative;
+      z-index: 1;
+    }
+    .header h1 {
+      font-size: 32px;
+      font-weight: 700;
+      background: linear-gradient(90deg, #ff6b35, #f7931e); /* Gradient orange pour titre */
+      -webkit-text-fill-color: transparent;
+      margin: 0;
+    }
+    .header p {
+      color: #666;
+      font-size: 16px;
+      margin: 10px 0 0;
+    }
+    :root.dark .header p {
+      color: #ccc;
+    }
+    .security-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 14px;
+      color: #28a745;
+      background: rgba(40, 167, 69, 0.1);
+      padding: 10px;
+      border-radius: 10px;
+    }
+    .security-badge i {
+      margin-right: 8px;
+      color: #28a745;
+    }
+    .cart-summary {
+      background: linear-gradient(135deg, #e3f2fd, #f3e5f5); /* Bleu-rose léger */
+      padding: 25px;
+      border-radius: 15px;
+      margin-bottom: 30px;
+      border: 1px solid rgba(0, 123, 255, 0.2);
+    }
+    :root.dark .cart-summary {
+      background: linear-gradient(135deg, #1e3a5f, #2d3748);
+      border-color: rgba(0, 123, 255, 0.3);
+    }
+    .cart-summary h2 {
+      font-size: 22px;
+      margin: 0 0 15px;
+      color: #333;
+    }
+    :root.dark .cart-summary h2 {
+      color: #fff;
+    }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      color: #555;
+    }
+    :root.dark .cart-item {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      color: #ccc;
+    }
+    .cart-item:last-child {
+      border-bottom: none;
+    }
+    .total {
+      font-weight: 700;
+      font-size: 20px;
+      text-align: right;
+      margin-top: 15px;
+      color: #ff6b35; /* Orange pour total */
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #333;
+    }
+    :root.dark .form-group label {
+      color: #fff;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 15px;
+      border: 2px solid #ddd;
+      border-radius: 12px;
+      font-size: 16px;
+      background: #f9f9f9;
+      color: #333;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    }
+    :root.dark .form-group input {
+      background: #3a3a3a;
+      border-color: #555;
+      color: #fff;
+    }
+    .form-group input:focus {
+      outline: none;
+      border-color: #ff6b35;
+      box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.2);
+      transform: scale(1.02);
+    }
+    .pay-btn {
+      width: 100%;
+      padding: 20px;
+      background: linear-gradient(90deg, #ff6b35, #f7931e); /* Gradient orange vibrant */
+      color: #ffffff;
+      border: none;
+      border-radius: 15px;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+    .pay-btn::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.5s ease;
+    }
+    .pay-btn:hover::before {
+      left: 100%;
+    }
+    .pay-btn:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 15px 40px rgba(255, 107, 53, 0.4);
+      background: linear-gradient(90deg, #e55a2b, #d97706); /* Orange plus foncé */
+    }
+    .pay-btn i {
+      font-size: 22px;
+    }
+    .orange-logo {
+      display: block;
+      margin: 25px auto 0;
+      width: 120px;
+      opacity: 0.9;
+      filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.2));
+    }
+    .footer-note {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 12px;
+      color: #777;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 10px;
+      border-radius: 10px;
+    }
+    :root.dark .footer-note {
+      color: #aaa;
+      background: rgba(42, 42, 42, 0.8);
+    }
+    .back-link {
+      display: block;
+      text-align: center;
+      margin-top: 15px;
+      color: #007bff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    .back-link:hover {
+      color: #ff6b35;
+      text-decoration: underline;
+    }
+    .error {
+      color: #dc3545;
+      font-size: 14px;
+      margin-top: 5px;
+      display: none;
+
+    }
+    .security-badge{
+        margin-top: 10px;
+        margin-bottom: 0;
+        font-weight: 700;
+        font-size: 16px;
+    }
+    .total{
+        color: #28a745;
+        font-size: 18px;
+    }
+    img{
+        border-radius: 10px;
+    }
+    p{
+        font-weight: bold;
+        font-size: 40px;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .payment-container {
+        margin: 10px;
+        padding: 25px;
+      }
+      .header h1 {
+        font-size: 28px;
+      }
+      .cart-summary {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="payment-container">
+    <div class="header">
+      <p>FINALISE TON ACHAT AVEC ORANGE MONEY </p>
+      <div class="security-badge">
+        <i class="fas fa-lock"></i>
+         Paiement 100% sécurisé et protégé
+      </div>
+    </div>
+
+    <div class="cart-summary">
+      <h2>🛒 Résumé de ta Commande</h2>
+      <div id="cartItems"></div>
+      <div class="total" id="cartTotal"></div>
+    </div>
+
+    <form id="paymentForm">
+      <div class="form-group">
+        <label for="firstName">
+          <i class="fas fa-user"></i> Prénom
+        </label>
+        <input type="text" id="firstName" name="firstName" placeholder="Ex: Jean" required>
+        <div class="error" id="firstNameError">Prénom requis.</div>
+      </div>
+      <div class="form-group">
+        <label for="lastName">
+          <i class="fas fa-user-tag"></i> Nom
+        </label>
+        <input type="text" id="lastName" name="lastName" placeholder="Ex: Dupont" required>
+        <div class="error" id="lastNameError">Nom requis.</div>
+      </div>
+      <div class="form-group">
+        <label for="phone">
+          <i class="fas fa-mobile-alt"></i> Numéro Orange Money
+        </label>
+        <input type="tel" id="phone" name="phone" placeholder="Ex: +237 699 999 999" required>
+        <div class="error" id="phoneError">Numéro invalide.</div>
+      </div>
+      <button type="submit" class="pay-btn">
+        <i class="fas fa-credit-card"></i>
+        Payer Maintenant
+      </button>
+    </form>
+
+    <img src="assets/orange-logo.png" style="width: 120px;" alt="Orange Money" class="orange-logo">
+
+    <p class="footer-note">
+      En procédant, tu acceptes nos conditions. Tes données sont chiffrées et sécurisées. 🚀
+    </p>
+
+    <a href="index.html" class="back-link">
+      <i class="fas fa-arrow-left"></i> Retour au Panier
+    </a>
+  </div>
+
+  <script>
+    // Charger le panier
+    let cart = JSON.parse(localStorage.getItem('my_store_cart_v2') || '[]');
+
+    // Afficher le résumé
+    function displayCartSummary() {
+      const cartItemsDiv = document.getElementById('cartItems');
+      const cartTotalDiv = document.getElementById('cartTotal');
+      const priceFormatter = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'XAF' });
+
+      if (cart.length === 0) {
+        cartItemsDiv.innerHTML = '<p>Ton panier est vide.</p>';
+        cartTotalDiv.textContent = 'Total: 0 XAF';
+        return;
+      }
+
+      cartItemsDiv.innerHTML = cart.map(item => `
+        <div class="cart-item">
+          <span>${item.name} (x${item.qty})</span>
+          <span>${priceFormatter.format(item.price * item.qty * 655)}</span>
+        </div>
+      `).join('');
+
+      const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+      cartTotalDiv.textContent = `Total: ${priceFormatter.format(total * 655)}`;
+    }
+
+    // Validation et soumission
+    document.getElementById('paymentForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const firstName = document.getElementById('firstName').value.trim();
+      const lastName = document.getElementById('lastName').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+
+      // Cacher les erreurs
+      document.querySelectorAll('.error').forEach(el => el.style.display = 'none');
+
+      let isValid = true;
+      if (!firstName) {
+        document.getElementById('firstNameError').style.display = 'block';
+        isValid = false;
+      }
+      if (!lastName) {
+        document.getElementById('lastNameError').style.display = 'block';
+        isValid = false;
+      }
+      if (!phone || !/^(\+237|237)?[6-9]\d{8}$/.test(phone.replace(/\s/g, ''))) {
+        document.getElementById('phoneError').style.display = 'block';
+        isValid = false;
+      }
+
+      if (!isValid) return;
+
+      const totalAmount = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+      const paymentData = {
+        amount: Math.round(totalAmount * 655),
+        currency: 'XAF',
+        description: 'Achat Apple Store Cameroun',
+        customer: { name: `${firstName} ${lastName}`, phone: phone },
+        items: cart.map(item => ({ name: item.name, quantity: item.qty, price: Math.round(item.price * 655) })),
+        successUrl: window.location.origin + '/success.html',
+        cancelUrl: window.location.origin + '/cancel.html'
+      };
+
+      fetch('/create-orange-payment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(paymentData)
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.paymentUrl) {
+          window.location.href = data.paymentUrl;
+        } else {
+          alert('Erreur lors du paiement.');
+        }
+      })
+      .catch(error => alert('Erreur réseau.'));
+    });
+
+    displayCartSummary();
+  </script>
+</body>
+</html>

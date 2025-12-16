@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Apple Store</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta name="theme-color" content="#ffffff" id="meta-theme" />
+  <script src="https://api.orangemoney.cm/sdk/v1/orange-money-sdk.js"></script>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header class="site-header" role="banner">
+    <div class="nav-inner">
+      <a class="logo" href="/" aria-label="Apple Store">
+        <!-- apple icons -->
+         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" fill="currentColor"/>
+          </svg><h3>Apple store</h3>
+      </a>
+
+      <nav class="primary-nav" aria-label="Primary">
+        <ul class="nav-list">
+          <li><a href="#" data-section="store" data-i18n="data_section_1">Boutique</a></li>
+          <li><a href="#" data-section="mac">Mac</a></li>
+          <li><a href="#" data-section="ipad">iPad</a></li>
+          <li><a href="#" data-section="iphone">iPhone</a></li>
+          <li><a href="#" data-section="watch">Watch</a></li>
+          <li><a href="#" data-section="vision">Vision</a></li>
+          <li><a href="#" data-section="airpods">AirPods</a></li>
+          <li><a href="#" data-section="tvhome">TV & Home</a></li>
+          <li><a href="#" data-section="entertainment" data-i18n="data_section_9">Divertissement</a></li>
+          <li><a href="#" data-section="accessories" data-i18n="data_section_10">Accessoires</a></li>
+          <li><a href="#" data-section="support">Support</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="icon-btn" id="searchBtn" aria-label="Recherche">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="11" cy="11" r="6" stroke="currentColor" stroke-width="1.6"/></svg>
+        </button>
+
+        <button class="icon-btn" id="cartBtn" aria-label="Panier" style="position: relative;">
+          <span id="cartCount" class="cart-count">0</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 6h15l-1.5 9h-11.5L6 6z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><circle cx="10" cy="20" r="1" fill="currentColor"/><circle cx="18" cy="20" r="1" fill="currentColor"/></svg>
+        </button>
+
+        <button class="toggle-btn" id="themeToggle" aria-label="Toggle theme" data-theme="auto">
+          <span class="theme-icon" aria-hidden="true"></span>
+        </button>
+
+        <button class="hamburger" id="menuBtn" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- floating search --> 
+    <div class="search-wrapper" id="searchWrap" aria-hidden="true">
+      <div class="search-inner">
+        <input id="searchInput" type="search" placeholder="Rechercher un accesoire..." aria-label="Rechercher produits">
+        <div class="search-suggestions" id="searchSuggestions" aria-live="polite"></div>
+      </div>
+    </div>
+
+    <!-- cart drawer -->
+    <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+      <div class="cart-head">
+        <h3 data-i18n="cart">Panier</h3>
+        <button class="close-drawer" id="closeCart" aria-label="Fermer panier">×</button>
+      </div>
+      <div class="cart-body" id="cartBody">
+        <p class="empty" data-i18n="cart_status">Votre panier est vide.</p>
+      </div>
+      <div class="cart-footer">
+        <div class="total">Total: <strong style="font-weight: bold; font-size: 16px;" id="cartTotal">0 €</strong></div>
+        <button class="checkout" style="font-size: 14px;" id="checkoutBtn" onclick="checkoutBtn()">Procéder au paiement</button>
+      </div>
+    </aside>
+
+    <!-- mobile menu overlay -->
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <button class="close-mobile" id="closeMobile" aria-label="Fermer menu">×</button>
+      <ul>
+         <li><a href="#" data-section="store" data-i18n="data_section_1">Boutique</a></li>
+          <li><a href="#" data-section="mac">Mac</a></li>
+          <li><a href="#" data-section="ipad">iPad</a></li>
+          <li><a href="#" data-section="iphone">iPhone</a></li>
+          <li><a href="#" data-section="watch">Watch</a></li>
+          <li><a href="#" data-section="vision">Vision</a></li>
+          <li><a href="#" data-section="airpods">AirPods</a></li>
+          <li><a href="#" data-section="tvhome">TV & Home</a></li>
+          <li><a href="#" data-section="entertainment" data-i18n="data_section_9">Divertissement</a></li>
+          <li><a href="#" data-section="accessories" data-i18n="data_section_10">Accessoires</a></li>
+          <li><a href="#" data-section="support">Support</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main class="site-main" id="mainContent">
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-image"><img src="assets/Iphone-hero.png" alt="acc" height="100%" width="100%"></div>
+        <div class="infos">
+          <h1 class="hero-title" data-i18n="hero_title">Apple dévoile l’iPhone 17 Pro Max</h1>
+          <p class="hero-sub" data-i18n="hero_subtitle">Un design en titane robuste et léger avec de nouveaux bords profilés, un nouveau bouton Action, d'importantes améliorations de l’appareil photo, et la puce A17 Pro offrant des performances et une expérience de jeu sur mobile inédites</p>
+          <a class="cta" href="#shop" data-i18n="hero_call_to_action">Acheter maintenant</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTS container: JS will inject category grid / product cards here -->
+    <section id="shop" class="products-section">
+      <div class="container" id="productsContainer"></div>
+    </section>
+  </main>
+
+  <!-- PRODUCT MODAL -->
+  <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" id="productModal">
+      <button class="modal-close" id="modalClose" aria-label="Fermer">×</button>
+      <div class="modal-grid">
+        <div class="modal-image"><img id="modalImg" src="" alt=""></div>
+        <div class="modal-body" style="margin-top: 0;">
+          <h2 id="modalTitle" style="text-transform: uppercase;"></h2>
+          <p id="modalCategory" class="muted" style="text-transform: lowercase;"></p>
+          <p id="modalPrice" class="price"></p>
+          <p id="modalDescription" class="desc"></p>
+
+          <div class="qty-row">
+            <button id="qtyMinus" class="qty-btn">-</button>
+            <input id="qtyInput" type="number" value="1" min="1">
+            <button id="qtyPlus" class="qty-btn">+</button>
+          </div>
+
+          <div style="margin-top:16px;">
+            <button id="addToCartBtn" data-i18n="add_to_cart" class="add-cart"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 6h15l-1.5 9h-11.5L6 6z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><circle cx="10" cy="20" r="1" fill="currentColor"/><circle cx="18" cy="20" r="1" fill="currentColor"/></svg>  Ajouter au panier</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Le footer complet sera ajouté ici -->
+
+<!-- FOOTER PREMIUM -->
+<footer class="footer-container">
+  <div class="footer-inner">
+    <!-- Left Section (FR) -->
+    <div class="footer-column">
+      <h3 class="footer-title">À propos</h3>
+      <p>Bienvenue sur notre Apple Store Cameroun, votre référence pour les produits Apple authentiques.</p>
+      <ul>
+        <li><a href="#">Qui sommes-nous ?</a></li>
+        <li><a href="#">Conditions d'utilisation</a></li>
+        <li><a href="#">Support & Assistance</a></li>
+        <li><a href="#">Garantie & Réparation</a></li>
+        <li><a href="#">Confidentialité</a></li>
+      </ul>
+    </div>
+
+    <!-- Right Section (EN) -->
+    <div class="footer-column">
+      <h3 class="footer-title">About</h3>
+      <p>Welcome to our Apple Store Cameroon, your best place for authentic Apple products.</p>
+      <ul>
+        <li><a href="#">Who we are</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Support & Help</a></li>
+        <li><a href="#">Warranty & Repair</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+
+    <!-- Socials -->
+    <div class="footer-column">
+    <h3 class="footer-title">Socials</h3>
+    <div class="social-icons">
+        <a href="https://www.facebook.com/YoungBrice" class="facebook"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/username/" class="instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://x.com/username" class="twitter"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://www.tiktok.com/@username" class="tiktok"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.youtube.com/@username" class="youtube"><i class="fab fa-youtube"></i></a>
+        <a href="https://wa.me/237681299075" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+    </div>
+</div>
+
+    <!-- Language Switch -->
+    <div class="footer-column language-box">
+      <h3 class="footer-title">Langue / Language</h3>
+      <label><input type="radio" name="lang" id="lang-fr" value="fr" checked> Français</label>
+      <label><input type="radio" name="lang" id="lang-en" value="en"> English</label>
+    </div>
+  </div>
+
+  <div class="footer-bottom" data-i18n="footer_rights">2025 Apple Store Cameroun — All rights reserved.</div>
+</footer>
+
+<style>
+
+  /* ---- FOOTER PREMIUM APPLE ---- */
+
+/* Réseaux sociaux */
+.social-icons {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+    font-size:24px;
+}
+
+.social-icons a {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    transition: 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Animation verticale sur les icônes */
+.social-icons a::before {
+    content: "";
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.096);
+    transform: skewX(-20deg);
+    animation: shine-icon 3s infinite;
+}
+
+@keyframes shine-icon {
+    0% { top: -100%; }
+    100% { top: 200%; }
+}
+
+/* Couleurs officielles */
+.social-icons .facebook { color: #1877f2; }
+.social-icons .instagram { color: #E4405F; }
+.social-icons .twitter { color: #fff; }
+.social-icons .tiktok { color: #69C9D0; }
+.social-icons .youtube { color: #FF0000; }
+.social-icons .whatsapp { color: #25D366; }
+
+
+  .footer-container{
+    width:100%;
+    position: relative;
+    overflow: hidden;
+    background: #1c1c1e;
+    margin-top: 60px;
+    color:#cfcfcf;
+    padding:60px 8%;
+    border-top:1px solid rgba(255,255,255,0.05);
+    backdrop-filter:blur(6px);
+    box-shadow:0 -10px 25px rgba(0,0,0,0.4);
+  }
+  /* Animation de brillance diagonale */
+  .footer-container::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(255,255,255,0.05) 50%,
+        transparent 100%
+    );
+    transform: rotate(0deg);
+    animation: shimmer-footer 8s infinite linear;
+}
+
+@keyframes shimmer-footer {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(50%, 50%) rotate(360deg); }
+}
+  .footer-inner{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:40px;
+  }
+  .footer-title{
+    font-size:18px;
+    margin-bottom:15px;
+    font-weight:600;
+    color:white;
+  }
+  .footer-column ul li{
+    margin:8px 0;
+  }
+  .footer-column ul li a{
+    text-decoration:none;
+    color:#bcbcbc;
+    transition:0.3s;
+  }
+  .footer-column ul li a:hover{
+    color:white;
+    margin-left:6px;
+  }
+  
+  .language-box label{
+    display:block;
+    margin-top:10px;
+    font-size:16px;
+  }
+  .footer-bottom{
+    text-align:center;
+    margin-top:60px;
+    font-size:14px;
+    color:#999;
+    border-top:1px solid #222;
+    padding-top:20px;
+  }
+</style>
+
+<script>
+  const frTexts={
+    about:"À propos", who:"Qui sommes-nous ?", terms:"Conditions d'utilisation",
+    support:"Support & Assistance", privacy:"Confidentialité"
+  };
+  const enTexts={
+    about:"About", who:"Who we are", terms:"Terms of Service",
+    support:"Support & Help", privacy:"Privacy Policy"
+  };
+
+  document.getElementById("lang-fr").addEventListener("click",()=>setLang(frTexts));
+  document.getElementById("lang-en").addEventListener("click",()=>setLang(enTexts));
+
+  function setLang(text){
+    document.querySelectorAll(".footer-column")[0].querySelector("h3").textContent=text.about;
+    const items=document.querySelectorAll(".footer-column ul li a");
+    items[0].textContent=text.who;
+    items[1].textContent=text.terms;
+    items[2].textContent=text.support;
+    items[3].textContent=text.privacy;
+  }
+</script>
+
+
+<script src="script.js"></script>
+</body>
+</html>
