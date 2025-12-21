@@ -712,14 +712,13 @@ if (checkoutBtn) {
   //document.querySelector(".cart-footer").prepend(btn);
 }
 
-function checkoutBtn() {
+function commandProducts() {
   if (!cart || cart.length === 0) {
     alert('Ton panier est vide ! Ajoute des produits avant de commander.');
     return;
   }
 
-  // Ton numéro WhatsApp (remplace par le tien, ex. : +237699999999)
-  const whatsappNumber = '+237699999999'; // Mets ton numéro ici
+  const whatsappNumber = '+237681299075'; 
 
   // Construire le message automatique avec les détails du panier
   let message = 'Bonjour ! Je souhaite commander les produits suivants :\n\n';
@@ -737,4 +736,5 @@ function checkoutBtn() {
   window.location.href = whatsappUrl;
 }
 })();
+
 
