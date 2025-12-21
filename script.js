@@ -715,17 +715,15 @@ if (checkoutBtn) {
 // Limiter les descriptions à ~100 caractères pour 2 lignes 
 
   // Attacher l'événement au bouton "Procéder au paiement"
-  
-  const command = document.getElementById('checkoutBtn');
-  
-
-command.addEventListener('click', function() {
+  document.getElementById('checkoutBtn').addEventListener('click', function() {
   if (!cart || cart.length === 0) {
     alert('Ton panier est vide ! Ajoute des produits avant de commander.');
     return;
   }
-  command.textContent = 'Commande en cours...';
-  command.disabled = true; // Désactiver pour éviter les clics multiples
+  const button = document.getElementById('checkoutBtn');
+  
+  button.textContent = 'Commande en cours...';
+  button.disabled = true; // Désactiver pour éviter les clics multiples
   const whatsappNumber = '+237681299075'; 
 
   // Construire le message automatique avec les détails du panier
@@ -745,6 +743,7 @@ command.addEventListener('click', function() {
 });
 
 })();
+
 
 
 
