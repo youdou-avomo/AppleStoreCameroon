@@ -713,17 +713,28 @@ if (checkoutBtn) {
 }
 
 function checkoutBtn() {
-  console.log('checkoutBtn appelée'); // Pour déboguer - enlève après
   if (!cart || cart.length === 0) {
-    alert('Ton panier est vide ! Ajoute des produits avant de payer.');
+    alert('Ton panier est vide ! Ajoute des produits avant de commander.');
     return;
   }
-  // Rediriger vers payment.html
-  window.location.href = 'payment.html';
+
+  // Ton numéro WhatsApp (remplace par le tien, ex. : +237699999999)
+  const whatsappNumber = '+237699999999'; // Mets ton numéro ici
+
+  // Construire le message automatique avec les détails du panier
+  let message = 'Bonjour ! Je souhaite commander les produits suivants :\n\n';
+  cart.forEach(item => {
+    message += `- ${item.name} (Quantité: ${item.qty}) - Prix: ${item.price * item.qty} €\n`;
+  });
+  const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+  message += `\nTotal: ${total} €\n\nMerci de confirmer le paiement et la livraison.`;
+
+  // Encoder le message pour l'URL WhatsApp
+  const encodedMessage = encodeURIComponent(message);
+
+  // Rediriger vers WhatsApp
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+  window.location.href = whatsappUrl;
 }
-
-      cartBtn.addEventListener("click", injectClearCartBtn);
-// Limiter les descriptions à ~100 caractères pour 2 lignes (ajuste selon ta police)
-
-
 })();
+
