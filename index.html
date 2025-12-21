@@ -75,7 +75,28 @@
       </div>
       <div class="cart-footer">
         <div class="total">Total: <strong style="font-weight: bold; font-size: 16px;" id="cartTotal">0 €</strong></div>
-        <button class="checkout" id="checkoutBtn" onclick="commandProducts()" data-i18n="call_to_action" style="font-size: 15px;">Commander</button>
+        <button class="checkout" id="checkoutBtn" onclick="()=> {
+  if (!cart || cart.length === 0) {
+    alert('Ton panier est vide ! Ajoute des produits avant de commander.');
+    return;
+  }
+
+  const whatsappNumber = '+237681299075'; 
+
+  // Construire le message automatique avec les détails du panier
+  let message = 'Bonjour ! Je souhaite commander les produits suivants :\n\n';
+  cart.forEach(item => {
+    message += `- ${item.name} (Quantité: ${item.qty}) - Prix: ${item.price * item.qty} €\n`;
+  });
+  const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+  message += `\nTotal: ${total} €\n\nMerci de confirmer le paiement et la livraison.`;
+
+  // Encoder le message pour l'URL WhatsApp
+  const encodedMessage = encodeURIComponent(message);
+
+  // Rediriger vers WhatsApp
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+  window.location.href = whatsappUrl; }" data-i18n="call_to_action" style="font-size: 15px;">Commander</button>
       </div>
     </aside>
 
@@ -351,6 +372,7 @@
 <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
