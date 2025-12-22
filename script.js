@@ -736,22 +736,23 @@ if (checkoutBtn) {
 
   // Encoder le message pour l'URL WhatsApp
   const encodedMessage = encodeURIComponent(message);
-
-  // Rediriger vers WhatsApp
+    
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
   window.location.href = whatsappUrl;
+    
   // Event 
 document.addEventListener('visibilitychange', function() {
   if (!document.hidden) {
     const button = document.getElementById('checkoutBtn');
     if (button) {
-      button.textContent = 'Procéder au paiement'; // Ou 'Commander via WhatsApp'
+      button.textContent = 'Commander'; 
       button.disabled = false;
     }
   }
 });});
 
 })();
+
 
 
 
