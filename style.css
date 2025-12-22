@@ -1091,6 +1091,12 @@ body {
   .mobile-menu { display: flex; }
 }
 
+/* breakpoint pour téléphones moyens : 2 colonnes */
+@media (min-width: 480px) and (max-width: 767px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 produits par ligne sur téléphones moyens */
+  }
+}
 @media (min-width: 768px) {
   .hero-inner { grid-template-columns: 1fr 1fr; }
 }
@@ -1098,3 +1104,4 @@ body {
 @media (min-width: 1024px) {
   .hero-inner { grid-template-columns: 450px 1fr; }
 }
+
