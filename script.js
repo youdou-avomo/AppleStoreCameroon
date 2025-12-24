@@ -41,8 +41,6 @@ const mainContent = document.getElementById("mainContent");
 // ---------- DATA ----------
 const allProducts = {
   
-const allProducts = {
-  
   store: [
     {id: 101, name:"iPhone Air", price:550000, category:"iphone", image:"assets/iphone-3.png", desc:"Écran large et autonomie renforcée."},
     {id: 102, name:"MacBook Air M4", price:1500000, category:"mac", image:"assets/mac-1.png", desc:"Ultraléger, puissant, écran Liquid Retina."},
@@ -748,6 +746,7 @@ document.addEventListener('visibilitychange', function() {
 // Limiter les descriptions à ~100 caractères pour 2 lignes (ajuste selon ta police)
 
 })();
+
 
 
 
