@@ -42,28 +42,28 @@ const mainContent = document.getElementById("mainContent");
 const allProducts = {
   
   store: [
-    {id: 101, name:"iPhone Air", price:550000, category:"iphone", image:"iphone-3.png", desc:"Écran large et autonomie renforcée."},
-    {id: 102, name:"MacBook Air M4", price:1500000, category:"mac", image:"mac-1.png", desc:"Ultraléger, puissant, écran Liquid Retina."},
-    {id: 103, name:"iPad Pro", price:800000, category:"ipad", image:"ipad-1.png", desc:"Puissance X-Series, design fin."},
-    {id: 104, name:"Watch Ultra 2", price:500000, category:"watch", image:"watch-4.png", desc:"Robuste, précise et faite pour l’aventure."}
+    {id: 101, name:"iPhone Air", price:150000, category:"iphone", image:"iphone-3.png", desc:"Écran large et autonomie renforcée."},
+    {id: 102, name:"MacBook Air M4", price:800000, category:"mac", image:"mac-1.png", desc:"Ultraléger, écran Liquid Retina."},
+    {id: 103, name:"iPad Pro", price:600000, category:"ipad", image:"ipad-1.png", desc:"Puissance X-Series, design fin."},
+    {id: 104, name:"Watch Ultra 2", price:120000, category:"watch", image:"watch-4.png", desc:"Robuste, précise, pour l’aventure."}
   ],
   mac: [
-    {id: 201, name:"MacBook Air", price:1200000, category:"mac", image:"mac-1.png", desc:"Fin, solide, rapide et parfait pour le quotidien."},
-    {id: 202, name:"MacBook Pro 14/16", price:2200000, category:"mac", image:"mac-3.png", desc:"Performances pro pour les tâches exigeantes."},
-    {id: 203, name:"Mac Pro", price:7000000, category:"mac", image:"mac-4.png", desc:"Station pro modulable pour workflows lourds."},
-    {id: 204, name:"Pro Display XDR", price:5000000, category:"mac", image:"mac-2.jpg", desc:"Écran 6K XDR pour créateurs professionnels."}
+    {id: 201, name:"MacBook Air", price:800000, category:"mac", image:"mac-1.png", desc:"Fin, solide, rapide et parfait pour le quotidien."},
+    {id: 202, name:"MacBook Pro 14/16", price:1200000, category:"mac", image:"mac-3.png", desc:"Performances pro pour les tâches exigeantes."},
+    {id: 203, name:"Mac Pro", price:3000000, category:"mac", image:"mac-4.png", desc:"Station pro modulable pour workflows lourds."},
+    {id: 204, name:"Pro Display XDR", price:1500000, category:"mac", image:"mac-2.jpg", desc:"Écran 6K XDR pour créateurs professionnels."}
   ],
   ipad: [
     {id: 301, name:"iPad mini", price:400000, category:"ipad", image:"ipad-3.png", desc:"Compact, puissant et ultra-portable."},
     {id: 302, name:"iPad 10ᵉ", price:300000, category:"ipad", image:"ipad-4.png", desc:"Écran immersif et performances fluides."},
     {id: 303, name:"iPad Air", price:500000, category:"ipad", image:"ipad-2.png", desc:"Léger, rapide, idéal pour la créativité."},
-    {id: 304, name:"iPad Pro", price:800000, category:"ipad", image:"ipad-1.png", desc:"La meilleure expérience iPad, écran XDR."}
+    {id: 304, name:"iPad Pro", price:600000, category:"ipad", image:"ipad-1.png", desc:"La meilleure expérience iPad, écran XDR."}
   ],
   iphone: [
     {id: 401, name:"iPhone 17 Pro", price:900000, category:"iphone", image:"iphone-1.png", desc:"Design premium et caméra avancée."},
-    {id: 402, name:"iPhone 16 Pro", price:700000, category:"iphone", image:"iphone-hero.png", desc:"Grand écran et excellente autonomie."},
-    {id: 403, name:"iPhone Air", price:600000, category:"iphone", image:"iphone-3.png", desc:"Performances Pro dans un format léger."},
-    {id: 404, name:"iPhone 11", price:250000, category:"iphone", image:"iphone-4.png", desc:"Abordable, fiable et polyvalent."}
+    {id: 402, name:"iPhone 16 Pro", price:500000, category:"iphone", image:"iphone-hero.png", desc:"Grand écran et excellente autonomie."},
+    {id: 403, name:"iPhone Air", price:150000, category:"iphone", image:"iphone-3.png", desc:"Performances Pro dans un format léger."},
+    {id: 404, name:"iPhone 11", price:110000, category:"iphone", image:"iphone-4.png", desc:"Abordable, fiable et polyvalent."}
   ],
   watch: [
     {id: 501, name:"Watch Series 9", price:250000, category:"watch", image:"watch-2.png", desc:"Suivi santé avancé et performance."},
@@ -746,6 +746,7 @@ document.addEventListener('visibilitychange', function() {
 // Limiter les descriptions à ~100 caractères pour 2 lignes (ajuste selon ta police)
 
 })();
+
 
 
 
