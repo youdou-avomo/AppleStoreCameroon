@@ -117,7 +117,7 @@ let currentSection = 'store';
 let cart = loadCart();
 let currentModalProductId = null;
 // ---------- helpers ----------
-  const priceFormatter = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' });
+  const priceFormatter = new Intl.NumberFormat('cmr-CMR', { style: 'currency', currency: 'FCFA' });
  function normPath(p){
     if(!p) return p;
     return p.replace(/^\/+|^[a-zA-Z]:\\/g,''); // remove leading slash or C:\ if any
@@ -756,4 +756,5 @@ document.addEventListener('visibilitychange', function() {
 // Limiter les descriptions à ~100 caractères pour 2 lignes (ajuste selon ta police)
 
 })();
+
 
