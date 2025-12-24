@@ -319,6 +319,7 @@ box-shadow: 0 12px 26px rgba(0,0,0,0.55);
   pointer-events: none;
   z-index: 10;
 }
+.cart-drawer{background: var(--bg);}
 
 /* ===== Centrer et styliser le message "Votre panier est vide." ===== */
 .cart-body .empty {
@@ -350,12 +351,12 @@ box-shadow: 0 12px 26px rgba(0,0,0,0.55);
   gap:12px;
 }
 .cart-footer .total strong#cartTotal {
-  background: linear-gradient(90deg,#00b894,#00c9a7);
+  background: linear-gradient(90deg,#3196fa,#4fb0ff);
   color: #fff;
   padding: 8px 12px;
   border-radius: 10px;
   font-size: 18px;
-  font-weight: 800;
+  font-weight: 700;
   box-shadow: 0 12px 30px rgba(3, 201, 136, 0.12);
 }
 
@@ -1105,5 +1106,6 @@ body {
 @media (min-width: 1024px) {
   .hero-inner { grid-template-columns: 450px 1fr; }
 }
+
 
 
