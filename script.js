@@ -718,10 +718,10 @@ document.getElementById('checkoutBtn').addEventListener('click', function() {
   // Construire le message automatique avec les détails du panier
   let message = 'Bonjour ! Je souhaite commander les produits suivants :\n\n';
   cart.forEach(item => {
-    message += `- ${item.name} (Quantité: ${item.qty}) - Prix: ${item.price * item.qty} €\n`;
+    message += `- ${item.name} (Quantité: ${item.qty}) - Prix: ${item.price * item.qty} XAF\n`;
   });
   const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-  message += `\nTotal: ${total} €\n\nMerci de confirmer le paiement et la livraison.`;
+  message += `\nTotal: ${total} XAF\n\nMerci de confirmer le paiement et la livraison.`;
 
   // Encoder le message pour l'URL WhatsApp
   const encodedMessage = encodeURIComponent(message);
@@ -746,6 +746,7 @@ document.addEventListener('visibilitychange', function() {
 // Limiter les descriptions à ~100 caractères pour 2 lignes (ajuste selon ta police)
 
 })();
+
 
 
 
