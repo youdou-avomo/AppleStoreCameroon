@@ -40,75 +40,76 @@ const mainContent = document.getElementById("mainContent");
 
 // ---------- DATA ----------
 const allProducts = {
-  store: [
-    {id: 101, name:"iPhone Air", price:1099, category:"iphone", image:"assets/iphone-3.png", desc:"Écran large et autonomie renforcée.", carac:""},
-    {id: 102, name:"MacBook Air M4", price:1999, category:"mac", image:"assets/mac-1.png", desc:"Ultraléger, puissant, écran Liquid Retina.", carac:""},
-    {id: 103, name:"iPad Pro", price:1199, category:"ipad", image:"assets/ipad-1.png", desc:"Puissance X-Series, design fin.", carac:""},
-    {id: 104, name:"Watch Ultra 2", price:799, category:"watch", image:"assets/watch-4.png", desc:"Robuste, précise et faite pour l’aventure.", carac:""}
-  ],
+  
+store: [
+ {id:101, name:"iPhone Air", price: 650000, category:"iphone", image:"iphone-3.png", desc:"Écran large et autonomie renforcée.", carac:""},
+ {id:102, name:"MacBook Air M4", price: 1200000, category:"mac", image:"mac-1.png", desc:"Ultraléger, puissant, écran Liquid Retina.", carac:""},
+ {id:103, name:"iPad Pro", price: 820000, category:"ipad", image:"ipad-1.png", desc:"Puissance X-Series, design fin.", carac:""},
+ {id:104, name:"Watch Ultra 2", price: 520000, category:"watch", image:"watch-4.png", desc:"Robuste, précise et faite pour l’aventure.", carac:""}
+],
 
-  mac: [
-    {id: 201, name:"MacBook Air", price:1199, category:"mac", image:"assets/mac-1.png", desc:"Fin, solide, rapide et parfait pour le quotidien.", carac:""},
-    {id: 202, name:"MacBook Pro 14/16", price:2199, category:"mac", image:"assets/mac-3.png", desc:"Performances pro pour les tâches exigeantes.", carac:"Puce M5 / M4 Pro / M4 Max"},
-    {id: 203, name:"Mac Pro", price:6999, category:"mac", image:"assets/mac-4.png", desc:"Station pro modulable pour workflows lourds.", carac:"Puce M2 Ultra"},
-    {id: 204, name:"Pro Display XDR", price:4999, category:"mac", image:"assets/mac-2.jpg", desc:"Écran 6K XDR pour créateurs professionnels.", carac:""}
-  ],
+mac: [
+ {id:201, name:"MacBook Air", price: 850000, category:"mac", image:"mac-1.png", desc:"Fin, solide, rapide.", carac:""},
+ {id:202, name:"MacBook Pro 14/16", price: 1500000, category:"mac", image:"mac-3.png", desc:"Performances professionnelles.", carac:"Puce M4 Pro / Max"},
+ {id:203, name:"Mac Pro", price: 4200000, category:"mac", image:"mac-4.png", desc:"Station de travail ultra-puissante.", carac:"M2 Ultra"},
+ {id:204, name:"Pro Display XDR", price: 3000000, category:"mac", image:"mac-2.jpg", desc:"Écran 6K XDR.", carac:""}
+],
 
-  ipad: [
-    {id: 301, name:"iPad mini", price:599, category:"ipad", image:"assets/ipad-3.png", desc:"Compact, puissant et ultra-portable.", carac:""},
-    {id: 302, name:"iPad 10ᵉ", price:449, category:"ipad", image:"assets/ipad-4.png", desc:"Écran immersif et performances fluides.",  carac:""},
-    {id: 303, name:"iPad Air", price:699, category:"ipad", image:"assets/ipad-2.png", desc:"Léger, rapide, idéal pour la créativité.",  carac:""},
-    {id: 304, name:"iPad Pro", price:1199, category:"ipad", image:"assets/ipad-1.png", desc:"La meilleure expérience iPad, écran XDR.",  carac:""}
-  ],
+ipad: [
+ {id:301, name:"iPad mini", price: 420000, category:"ipad", image:"ipad-3.png", desc:"Compact et puissant.", carac:""},
+ {id:302, name:"iPad 10ᵉ", price: 300000, category:"ipad", image:"ipad-4.png", desc:"Fluide et immersif.", carac:""},
+ {id:303, name:"iPad Air", price: 480000, category:"ipad", image:"ipad-2.png", desc:"Créatif et léger.", carac:""},
+ {id:304, name:"iPad Pro", price: 820000, category:"ipad", image:"ipad-1.png", desc:"La meilleure expérience iPad.", carac:""}
+],
 
-  iphone: [
-    {id: 401, name:"iPhone 17 Pro", price:1299, category:"iphone", image:"assets/iphone-1.png", desc:"Design premium et caméra avancée.", carac:""},
-    {id: 402, name:"iPhone 16 Pro", price:999, category:"iphone", image:"assets/iphone-hero.png", desc:"Grand écran et excellente autonomie.", carac:""},
-    {id: 403, name:"iPhone Air", price:899, category:"iphone", image:"assets/iphone-3.png", desc:"Performances Pro dans un format léger.",  carac:""},
-    {id: 404, name:"iPhone 11", price:399, category:"iphone", image:"assets/iphone-4.png", desc:"Abordable, fiable et polyvalent.",  carac:""}
-  ],
+iphone: [
+ {id:401, name:"iPhone 17 Pro", price: 900000, category:"iphone", image:"iphone-1.png", desc:"Premium et ultra-puissant.", carac:""},
+ {id:402, name:"iPhone 16 Pro", price: 750000, category:"iphone", image:"iphone-hero.png", desc:"Autonomie et performance.", carac:""},
+ {id:403, name:"iPhone Air", price: 650000, category:"iphone", image:"iphone-3.png", desc:"Léger et rapide.", carac:""},
+ {id:404, name:"iPhone 11", price: 280000, category:"iphone", image:"iphone-4.png", desc:"Fiable et abordable.", carac:""}
+],
 
-  watch: [
-    {id: 501, name:"Watch Series 9", price:399, category:"watch", image:"assets/watch-2.png", desc:"Suivi santé avancé et performance.",carac:""},
-    {id: 502, name:"Watch SE", price:279, category:"watch", image:"assets/watch-3.png", desc:"Essentiel, rapide et très abordable.",carac:""},
-    {id: 503, name:"Watch Ultra 2", price:799, category:"watch", image:"assets/watch-4.png", desc:"Résistante, sportive et précise.",carac:""},
-    {id: 504, name:"Watch Studio", price:229, category:"watch", image:"assets/watch-1.png", desc:"Style personnalisable et performant.",carac:""}
-  ],
+watch: [
+ {id:501, name:"Watch Series 9", price: 260000, category:"watch", image:"watch-2.png", desc:"Suivi santé avancé.", carac:""},
+ {id:502, name:"Watch SE", price: 180000, category:"watch", image:"watch-3.png", desc:"Essentiel et efficace.", carac:""},
+ {id:503, name:"Watch Ultra 2", price: 520000, category:"watch", image:"watch-4.png", desc:"Ultra-résistante.", carac:""},
+ {id:504, name:"Watch Studio", price: 150000, category:"watch", image:"watch-1.png", desc:"Stylée et moderne.", carac:""}
+],
 
-  vision:[
-    {id:1001,name:"Vision Pro", price:3499, category:"support", image:"assets/vision.png", desc:"Immersion extrême, puce M5 et confort total."},
-    {id:1002,name:"Solo Knit Band", price:99, category:"support", image:"assets/vision1.png", desc:"Confort, respirabilité et maintien optimal."},
-    {id:1003,name:"Apple Vision Pro", price:3499, category:"support", image:"assets/vision2.png", desc:"Collaboration immersive et multitâche avancé."},
-  ],
+vision: [
+ {id:1001, name:"Vision Pro", price: 2300000, category:"support", image:"vision.png", desc:"Réalité mixte Apple."},
+ {id:1002, name:"Solo Knit Band", price: 75000, category:"support", image:"vision1.png", desc:"Bande confortable."},
+ {id:1003, name:"Apple Vision Pro", price: 2300000, category:"support", image:"vision2.png", desc:"Expérience immersive."}
+],
 
-  airpods: [
-    {id:601,name:"AirPods Pro 2", price:249, category:"airpods", image:"assets/air-pod-pro2.png", desc:"ANC avancé et audio spatial immersif."},
-    {id:602,name:"AirPods 3", price:179, category:"airpods", image:"assets/air-pod.png", desc:"Son riche avec capteur de pression."},
-    {id:603,name:"Beats Studio", price:349, category:"airpods", image:"assets/beat-studio.png", desc:"Son puissant et réduction active du bruit."},
-    {id:604,name:"AirPods Max", price:549, category:"airpods", image:"assets/air-pod-max.png", desc:"Casque premium à haute fidélité."}
-  ],
+airpods: [
+ {id:601, name:"AirPods Pro 2", price: 180000, category:"airpods", image:"air-pod-pro2.png", desc:"ANC et audio spatial."},
+ {id:602, name:"AirPods 3", price: 120000, category:"airpods", image:"air-pod.png", desc:"Son riche."},
+ {id:603, name:"Beats Studio", price: 240000, category:"airpods", image:"beat-studio.png", desc:"Casque puissant."},
+ {id:604, name:"AirPods Max", price: 360000, category:"airpods", image:"air-pod-max.png", desc:"Casque premium."}
+],
 
-  tvhome:[
-    {id:701,name:"Apple TV 4K", price:179, category:"tvhome", image:"assets/apple_tv_4k.png", desc:"Streaming 4K, HDR et Apple TV OS."},
-    {id:702,name:"HomePod mini", price:99, category:"tvhome", image:"assets/home-pod-mini.png", desc:"Assistant intelligent et son immersif."},
-    {id:703,name:"Apple Remote", price:59, category:"tvhome", image:"assets/comfort.png", desc:"Télécommande modernisée."},
-    {id:704,name:"Home App", price:2, category:"tvhome", image:"assets/home-app.png", desc:"Total contrôle de la maison connectée."}
-  ],
+tvhome: [
+ {id:701, name:"Apple TV 4K", price: 120000, category:"tvhome", image:"apple_tv_4k.png", desc:"Streaming 4K."},
+ {id:702, name:"HomePod mini", price: 75000, category:"tvhome", image:"home-pod-mini.png", desc:"Assistant intelligent."},
+ {id:703, name:"Apple Remote", price: 40000, category:"tvhome", image:"comfort.png", desc:"Télécommande."},
+ {id:704, name:"Home App", price: 1500, category:"tvhome", image:"home-app.png", desc:"Domotique."}
+],
 
-  entertainment:[
-    
-  ],
+accessories: [
+ {id:901, name:"EvoPop Case", price: 30000, category:"accessories", image:"accessoire1.png", desc:"Coque premium."},
+ {id:902, name:"HidrateSpark Pro", price: 100000, category:"accessories", image:"accessoire2.png", desc:"Gourde connectée."},
+ {id:903, name:"Crossbody Strap", price: 45000, category:"accessories", image:"accessoire4.png", desc:"Bandoulière."},
+ {id:904, name:"Herschel Cloud", price: 60000, category:"accessories", image:"accessoire6.png", desc:"Organiseur tech."}
+],
 
-  accessories:[
-    {id:901,name:"EvoPop Case", price:49, category:"accessories", image:"assets/accessoire1.png", desc:"Coque antichoc premium."},
-    {id:902,name:"HidrateSpark Pro", price:159, category:"accessories", image:"assets/accessoire2.png", desc:"Gourde connectée intelligente."},
-    {id:903,name:"Crossbody Strap", price:69, category:"accessories", image:"assets/accessoire4.png", desc:"Bandoulière élégante et robuste."},
-    {id:904,name:"Herschel Cloud", price:89, category:"accessories", image:"assets/accessoire6.png", desc:"Organiseur tech élégant."}
-  ],
+support: [
+  
+],
+entertainment: [
+  
+]
 
-  support:[
-    
-  ]
 };
 
 // ---------- state ----------
@@ -755,3 +756,4 @@ document.addEventListener('visibilitychange', function() {
 // Limiter les descriptions à ~100 caractères pour 2 lignes (ajuste selon ta police)
 
 })();
+
