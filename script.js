@@ -145,7 +145,7 @@ const later = (fn, t=30) => setTimeout(fn,t);
         ${products.map(p => `
           <article class="card" data-id="${p.id}" data-tilt>
             <div class="tilt-inner" style="padding: 10px 5px 10px 5px ">
-              <img loading="lazy" style="height:256px" src="${p.image}" alt="${escapeHtml(p.name)}" />
+              <img loading="lazy" src="${p.image}" alt="${escapeHtml(p.name)}" />
               <h4>${escapeHtml(p.name)}</h4>
               <p class="muted">${escapeHtml(p.desc)}</p>
               <div style="margin-top:10px;display:flex;justify-content:center;gap:8px;align-items:center;">
@@ -746,6 +746,7 @@ document.addEventListener('visibilitychange', function() {
 // Limiter les descriptions à ~100 caractères pour 2 lignes (ajuste selon ta police)
 
 })();
+
 
 
 
