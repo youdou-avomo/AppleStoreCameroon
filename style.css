@@ -1096,7 +1096,7 @@ body {
 /* breakpoint pour téléphones moyens : 2 colonnes */
 @media (min-width: 350px) and (max-width: 767px) {
   .grid {
-    grid-template-columns: repeat(2, 120px);
+    grid-template-columns: repeat(2, 250px);
   }
 }
 @media (min-width: 768px) {
@@ -1106,6 +1106,7 @@ body {
 @media (min-width: 1024px) {
   .hero-inner { grid-template-columns: 450px 1fr; }
 }
+
 
 
 
