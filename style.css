@@ -1094,7 +1094,7 @@ body {
 }
 
 /* breakpoint pour téléphones moyens : 2 colonnes */
-@media (min-width: 350px) and (max-width: 499px) {
+@media (min-width: 350px) and (max-width: 469px) {
   .grid {
     grid-template-columns: repeat(1, 300px);
     justify-content: center;
@@ -1102,7 +1102,7 @@ body {
   }
 }
 
-@media (min-width: 500px) and (max-width: 767px) {
+@media (min-width: 470px) and (max-width: 767px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1115,6 +1115,7 @@ body {
 @media (min-width: 1024px) {
   .hero-inner { grid-template-columns: 450px 1fr; }
 }
+
 
 
 
