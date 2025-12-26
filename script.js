@@ -60,7 +60,7 @@ const allProducts = {
     {id: 304, name:"iPad Pro", price:600000, category:"ipad", image:"ipad-1.png", desc:"La meilleure expérience iPad, écran XDR."}
   ],
   iphone: [
-    {id: 401, name:"iPhone 11", price:110000, category:"iphone", image:"iphone-4.png", desc:"Abordable, fiable et polyvalent."}    
+    {id: 401, name:"iPhone 11", price:110000, category:"iphone", image:"iphone-4.png", desc:"Abordable, fiable et polyvalent."},    
     {id: 402, name:"iPhone Air", price:150000, category:"iphone", image:"iphone-3.png", desc:"Performances Pro dans un format léger."},
     {id: 403, name:"iPhone 17 Pro", price:900000, category:"iphone", image:"iphone-1.png", desc:"Design premium et caméra avancée."},
     {id: 404, name:"iPhone 16 Pro", price:500000, category:"iphone", image:"Iphone-hero.png", desc:"Grand écran et excellente autonomie."},
@@ -746,6 +746,7 @@ document.addEventListener('visibilitychange', function() {
 // Limiter les descriptions à ~100 caractères pour 2 lignes (ajuste selon ta police)
 
 })();
+
 
 
 
