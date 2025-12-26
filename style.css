@@ -1097,7 +1097,7 @@ body {
 @media (min-width: 350px) and (max-width: 767px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
-    height: 300px;
+    grid-template-rows: repeat(3, 2fr);
   }
 }
 @media (min-width: 768px) {
@@ -1107,6 +1107,7 @@ body {
 @media (min-width: 1024px) {
   .hero-inner { grid-template-columns: 450px 1fr; }
 }
+
 
 
 
