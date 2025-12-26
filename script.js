@@ -42,10 +42,10 @@ const mainContent = document.getElementById("mainContent");
 const allProducts = {
   
   store: [
-    {id: 101, name:"iPhone Air", price:150000, category:"iphone", image:"iphone-3.png", desc:"Écran large et autonomie renforcée."},
+    {id: 401, name:"iPhone 17 Pro", price:900000, category:"iphone", image:"iphone-1.png", desc:"Design premium et caméra avancée."},
     {id: 102, name:"MacBook Air M4", price:800000, category:"mac", image:"mac-1.png", desc:"Ultraléger, écran Liquid Retina."},
     {id: 103, name:"iPad Pro", price:600000, category:"ipad", image:"ipad-1.png", desc:"Puissance X-Series, design fin."},
-    {id: 104, name:"Watch Ultra 2", price:120000, category:"watch", image:"watch-4.png", desc:"Robuste, précise, pour l’aventure."}
+    {id: 502, name:"Watch SE", price:180000, category:"watch", image:"watch-3.png", desc:"Essentiel, rapide et très abordable."},
   ],
   mac: [
     {id: 201, name:"MacBook Air", price:800000, category:"mac", image:"mac-1.png", desc:"Fin, solide, rapide et parfait pour le quotidien."},
@@ -746,6 +746,7 @@ document.addEventListener('visibilitychange', function() {
 // Limiter les descriptions à ~100 caractères pour 2 lignes (ajuste selon ta police)
 
 })();
+
 
 
 
